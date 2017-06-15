@@ -1,0 +1,36 @@
+<div class="row header">
+  <div class="column column-50 column-offset-25">
+    <center>
+      <img src="https://www.theodinproject.com/assets/odin_head_silhouette_2_circle_simple_transparent-b2ee08a8bcec81a04d793cc3e151d6a0c261be84f9830705bfa78587f57026dc.gif" alt="">
+      <h1>Odin Flight Book</h1>
+    </center>
+  </div>
+</div>
+<div class="row search-form">
+  <div class="column column-50 column-offset-25">
+    <%= form_for :flights, url: url_for( :controller => :flights ), method: :get, remote: true do |f| %>
+    <div class="row">
+      <div class="column column-50">
+        <%= f.label :origin_id, 'From' %>
+        <%= f.collection_select(:origin_id, Airport.all, :id, :airport_code, prompt: "From") %>
+        <%= f.label :departure_date, 'Departure Date'%>
+        <%= f.collection_select(:departure_date, @date, :to_s, :to_s, prompt: "Date") %>
+        <%= f.submit 'Search', :id => 'search'%>
+      </div>
+      <div class="column column-50">
+        <%= f.label :destination_id, 'To' %>
+        <%= f.collection_select(:destination_id, Airport.all, :id, :airport_code, prompt: "To") %>
+        <%= f.label :seats, "Passengers" %>
+        <%= f.select :seats, options_for_select(1..4), prompt: "Passengers" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<div class="flights">
+</div>
+<div id="booking">
+</div>
