@@ -1,14 +1,13 @@
 <table>
-  <th>ID</th>
   <th>From</th>
   <th>To</th>
   <th>Duration</th>
   <th>Departure Date</th>
   <tr>
-    <td><%= @flights_pick[:id] %></td>
-    <td><%= @flights_pick[:origin_id] %></td>
-    <td><%= @flights_pick[:destination_id] %></td>
+    <td><%= @flights_pick.origin.airport_code %></td>
+    <td><%= @flights_pick.destination.airport_code %></td>
     <td><%= @flights_pick[:duration] %> Minutes</td>
     <td><%= @flights_pick[:departure_date] %></td>
   </tr>
 </table>
+<%= debug params %>

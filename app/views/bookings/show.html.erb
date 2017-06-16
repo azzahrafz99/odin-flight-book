@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="column column-50 column-offset-25">
+    <br><center><h2>Booking Information</h2></center>
+    <hr>
+    <p><b>Name  : <%= @passenger.first_name %> <%= @passenger.last_name %></b></p>
+    <p><b>Email : <%= @passenger.email %></b></p>
+    <table>
+      <th>Flight No.</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Duration</th>
+      <th>Departure Date</th>
+      <tr>
+        <td><%= @booking.flight.id %></td>
+        <td><%= @booking.flight.origin.airport_code %></td>
+        <td><%= @booking.flight.destination.airport_code %></td>
+        <td><%= @booking.flight.duration %> Minutes</td>
+        <td><%= @booking.flight.departure_date %></td>
+      </tr>
+    </table>
+  </div>
+</div>

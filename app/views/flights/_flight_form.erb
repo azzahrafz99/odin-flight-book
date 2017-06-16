@@ -1,6 +1,7 @@
 <div class="row">
   <div class="column column-50 column-offset-25">
     <%= form_for :bookings, url: url_for( :controller => :bookings, :action => :new ), method: :get, remote: true do |f| %>
+    <%= f.hidden_field(:seats, :value => params[:flights][:seats]) %>
       <table>
         <th></th>
         <th>From</th>
@@ -9,7 +10,6 @@
         <th>Departure Time</th>
         <% @results.each do |result| %>
           <tr>
-            <% f.hidden_field(:seats, :values => params[:seats]) %>
             <td><%= f.radio_button(:flight_id, result.id)%></td>
             <td><%= result.origin.airport_code %></td>
             <td><%= result.destination.airport_code %></td>
