@@ -5,14 +5,18 @@
     <h2>Passengers Information</h2>
     <%= form_for :bookings, url: url_for( :controller => :bookings, :action => :create ), method: :post do |booking| %>
       <%= booking.hidden_field :flight_id, :value => params[:bookings][:flight_id] %>
-      <%= booking.fields_for :passengers do |passenger| %>
-        <%= passenger.label :first_name, "First Name" %>
-        <%= passenger.text_field :first_name %>
-        <%= passenger.label :last_name, "Last Name" %>
-        <%= passenger.text_field :last_name %>
-        <%= passenger.label :email, "Email" %>
-        <%= passenger.text_field :email %>
-        <%= passenger.hidden_field :flight_id, :value => params[:bookings][:flight_id] %>
+      <%= booking.hidden_field :seats, :value => @seats %>
+      <% @seats.times do %>
+        <hr>
+        <%= booking.fields_for :passengers do |passenger| %>
+          <%= passenger.label :first_name, "First Name" %>
+          <%= passenger.text_field :first_name, multiple: true %>
+          <%= passenger.label :last_name, "Last Name" %>
+          <%= passenger.text_field :last_name, multiple: true %>
+          <%= passenger.label :email, "Email" %>
+          <%= passenger.text_field :email, multiple: true %>
+          <%= passenger.hidden_field :flight_id, :value => params[:bookings][:flight_id] %>
+        <% end %>
       <% end %>
       <%= booking.submit 'Order tickets' %>
     <% end %>

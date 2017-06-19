@@ -1,9 +1,6 @@
 <div class="row">
   <div class="column column-50 column-offset-25">
     <br><center><h2>Booking Information</h2></center>
-    <hr>
-    <p><b>Name  : <%= @passenger.first_name %> <%= @passenger.last_name %></b></p>
-    <p><b>Email : <%= @passenger.email %></b></p>
     <table>
       <th>Flight No.</th>
       <th>From</th>
@@ -18,5 +15,8 @@
         <td><%= @booking.flight.departure_date %></td>
       </tr>
     </table>
+    <% @booking.passengers.each do |p|%>
+      <%= p.first_name %>
+    <% end %>
   </div>
 </div>
