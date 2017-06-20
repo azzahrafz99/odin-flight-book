@@ -1,7 +1,7 @@
 <div class="row">
   <div class="column column-50 column-offset-25">
-    <%= form_for :bookings, url: url_for( :controller => :bookings, :action => :new ), method: :get, remote: true do |f| %>
-    <%= f.hidden_field(:seats, :value => params[:flights][:seats]) %>
+    <%= form_for :booking, url: url_for( :controller => :bookings, :action => :new ), method: :get, remote: true do |f| %>
+    <%= f.hidden_field(:seats, :value => params[:seats]) %>
       <table>
         <th></th>
         <th>From</th>

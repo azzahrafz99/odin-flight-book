@@ -3,19 +3,19 @@
     <center><h1>Your Booking Information</h1></center>
     <%= render 'flights/flight_info' %>
     <h2>Passengers Information</h2>
-    <%= form_for :bookings, url: url_for( :controller => :bookings, :action => :create ), method: :post do |booking| %>
-      <%= booking.hidden_field :flight_id, :value => params[:bookings][:flight_id] %>
+    <%= form_for :booking, url: url_for( :controller => :bookings, :action => :create ), method: :post do |booking| %>
+      <%= booking.hidden_field :flight_id, :value => params[:booking][:flight_id] %>
       <%= booking.hidden_field :seats, :value => @seats %>
       <% @seats.times do %>
         <hr>
-        <%= booking.fields_for :passengers do |passenger| %>
+        <%= booking.fields_for :passengers_attributes do |passenger| %>
           <%= passenger.label :first_name, "First Name" %>
-          <%= passenger.text_field :first_name, multiple: true %>
+          <%= passenger.text_field :first_name, name: 'booking[passengers_attributes][][first_name]' %>
           <%= passenger.label :last_name, "Last Name" %>
-          <%= passenger.text_field :last_name, multiple: true %>
+          <%= passenger.text_field :last_name, name: 'booking[passengers_attributes][][last_name]' %>
           <%= passenger.label :email, "Email" %>
-          <%= passenger.text_field :email, multiple: true %>
-          <%= passenger.hidden_field :flight_id, :value => params[:bookings][:flight_id] %>
+          <%= passenger.text_field :email, name: 'booking[passengers_attributes][][email]' %>
+          <%= passenger.hidden_field :flight_id, name: 'booking[passengers_attributes][][flight_id]', value: params[:booking][:flight_id].to_i %>
         <% end %>
       <% end %>
       <%= booking.submit 'Order tickets' %>

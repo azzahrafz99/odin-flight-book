@@ -8,20 +8,20 @@
 </div>
 <div class="row search-form">
   <div class="column column-50 column-offset-25">
-    <%= form_for :flights, url: url_for( :controller => :flights ), method: :get, remote: true do |f| %>
+    <%= form_tag flights_path, method: :get, remote: true do |f| %>
     <div class="row">
       <div class="column column-50">
-        <%= f.label :origin_id, 'From' %>
-        <%= f.collection_select(:origin_id, Airport.all, :id, :airport_code, prompt: "From") %>
-        <%= f.label :departure_date, 'Departure Date'%>
-        <%= f.collection_select(:departure_date, @date, :to_s, :to_s, prompt: "Date") %>
-        <%= f.submit 'Search', :id => 'search'%>
+        <%= label_tag :origin_id, 'From' %>
+        <%= select_tag :origin_id, options_from_collection_for_select(@airports, :id, :airport_code), prompt: "From" %>
+        <%= label_tag :departure_date, 'Departure Date' %>
+        <%= select_tag :departure_date,  options_for_select(@date), prompt: "Date" %>
+        <%= submit_tag 'Search', :id => 'search' %>
       </div>
       <div class="column column-50">
-        <%= f.label :destination_id, 'To' %>
-        <%= f.collection_select(:destination_id, Airport.all, :id, :airport_code, prompt: "To") %>
-        <%= f.label :seats, "Passengers" %>
-        <%= f.select :seats, options_for_select(1..4), prompt: "Passengers" %>
+        <%= label_tag :destination_id, 'To' %>
+        <%= select_tag :destination_id, options_from_collection_for_select(@airports, :id, :airport_code), prompt: "To" %>
+        <%= label_tag :seats, "Passengers" %>
+        <%= select_tag :seats, options_for_select(1..4), prompt: "Passengers" %>
       </div>
     </div>
     <% end %>
