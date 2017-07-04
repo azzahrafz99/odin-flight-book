@@ -3,6 +3,6 @@ class PassengerMailer < ApplicationMailer
 
   def welcome_email(passenger)
     @passenger = passenger
-    mail(to: @passenger.email, subject: "Thank you for booking the ticket.")
+    mail(to: @passenger.email, subject: 'Thank you for booking the ticket.')
   end
 end

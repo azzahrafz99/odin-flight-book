@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       @booking.passengers.each do |p|
-        PassengerMailer.welcome_email(p).deliver
+        PassengerMailer.welcome_email(p).deliver_now
       end
       redirect_to @booking
     else
