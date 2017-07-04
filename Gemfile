@@ -30,6 +30,8 @@ gem 'milligram'
 gem 'pry'
 # Use jquery as the JavaScript library
 
+gem "letter_opener", :group => :development
+
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster.
 # Read more: https://github.com/turbolinks/turbolinks
