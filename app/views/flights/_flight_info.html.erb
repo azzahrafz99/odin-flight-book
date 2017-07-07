@@ -4,9 +4,9 @@
   <th>Duration</th>
   <th>Departure Date</th>
   <tr>
-    <td><%= @flights_pick.origin.airport_code %></td>
-    <td><%= @flights_pick.destination.airport_code %></td>
-    <td><%= @flights_pick[:duration] %> Minutes</td>
-    <td><%= @flights_pick[:departure_date] %></td>
+    <td><%= @flight.origin.airport_code %></td>
+    <td><%= @flight.destination.airport_code %></td>
+    <td><%= @flight[:duration] %> Minutes</td>
+    <td><%= @flight[:departure_date] %></td>
   </tr>
 </table>

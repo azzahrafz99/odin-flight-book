@@ -3,6 +3,7 @@ class FlightsController < ApplicationController
   before_action :search_by_origin, only: [:index]
   before_action :search_by_departure, only: [:index]
   before_action :search_by_destination, only: [:index]
+
   def index
     @airports = Airport.all
     @date = departure_date

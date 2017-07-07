@@ -7,9 +7,9 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @flights_pick = Flight.find_by_id(params[:booking][:flight_id])
+    @flight = Flight.find_by_id(params[:booking,][:flight_id])
     @seats = params[:booking][:seats].to_i
-    @booking = @flights_pick.bookings.build
+    @booking = @flight.bookings.build
     @seats.times { @booking.passengers.build }
   end
 
